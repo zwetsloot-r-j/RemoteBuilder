@@ -6,7 +6,7 @@ const startServer = (port) => {
 
   return vscode.tasks.fetchTasks().then(function(tasks) {
     for (let task of tasks) {
-      app.get(`/${task._name}`.replaceAll(" ", "_"), (req, res) => {
+      app.get(`/${task.name}`.replaceAll(" ", "_"), (req, res) => {
         vscode.tasks.executeTask(task);
         res.send(`Executing task: ${task._name}`);
       });
